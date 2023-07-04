@@ -13,7 +13,7 @@ The Casting Agency models a company that is responsible for creating movies and 
     * PATCH /actors/ and /movies/
 * Roles includes:
     * Casting Assistant
-    * * (Can view actors and movies)
+        * (Can view actors and movies)
     * Casting Director ()
     * Permissions specified for all endpoints
 * Tests includes at least…
