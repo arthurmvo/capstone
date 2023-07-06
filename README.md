@@ -65,7 +65,7 @@ Here you can find all existing endpoints, which methods can be used, how to work
 Additionally, common pitfalls & error messages are explained, if applicable.
 
 ### Base URL
-**_https://artist-capstone-fsnd-matthew.herokuapp.com_**
+**_https://capstone-project-eu1y.onrender.com_**
 
 ## Existing Roles
 
@@ -110,7 +110,7 @@ Along the project you can find the file to run all the tests on postman locally 
 Query paginated actors.
 
 ```bash
-$ curl -X GET https://artist-capstone-fsnd-matthew.herokuapp.com/actors?page1
+$ curl -X GET https://capstone-project-eu1y.onrender.com/actors?page1
 ```
 - Fetches a list of dictionaries of examples in which the keys are the ids with all available fields
 - Request Arguments: 
@@ -143,7 +143,7 @@ $ curl -X GET https://artist-capstone-fsnd-matthew.herokuapp.com/actors?page1
 If you try fetch a page which does not have any actors, you will encounter an error which looks like this:
 
 ```bash
-$ curl -X GET https://artist-capstone-fsnd-matthew.herokuapp.com/actors?page123124
+$ curl -X GET https://capstone-project-eu1y.onrender.com/actors?page23567
 ```
 
 will return
@@ -162,15 +162,16 @@ will return
 Insert new actor into database.
 
 ```bash
-$ curl -X POST https://artist-capstone-fsnd-matthew.herokuapp.com/actors
+$ curl -X POST https://capstone-project-eu1y.onrender.com/actors
 ```
 
 - Request Arguments: **None**
 - Request Headers: (_application/json_)
-       1. **string** `name` (<span style="color:red">*</span>required)
-       2. **integer** `age` (<span style="color:red">*</span>required)
+       1. **string** `name` 
+       2. **integer** `age` 
        3. **string** `gender`
-- Requires permission: `create:actors`
+       4. **integer** `movie_id`
+- Requires permission: `post:actors`
 - Returns: 
   1. **integer** `id from newly created actor`
   2. **boolean** `success`
@@ -188,7 +189,7 @@ If you try to create a new actor without a requiered field like `name`,
 it will throw a `422` error:
 
 ```bash
-$ curl -X GET https://artist-capstone-fsnd-matthew.herokuapp.com/actors?page123124
+$ curl -X GET https://capstone-project-eu1y.onrender.com/actors?page52346
 ```
 
 will return
@@ -207,7 +208,7 @@ will return
 Edit an existing Actor
 
 ```bash
-$ curl -X PATCH https://artist-capstone-fsnd-matthew.herokuapp.com/actors/1
+$ curl -X PATCH https://capstone-project-eu1y.onrender.com/actors/1
 ```
 
 - Request Arguments: **integer** `id from actor you want to update`
@@ -215,7 +216,7 @@ $ curl -X PATCH https://artist-capstone-fsnd-matthew.herokuapp.com/actors/1
        1. **string** `name` 
        2. **integer** `age` 
        3. **string** `gender`
-- Requires permission: `edit:actors`
+- Requires permission: `patch:actors`
 - Returns: 
   1. **integer** `id from updated actor`
   2. **boolean** `success`
@@ -244,7 +245,7 @@ $ curl -X PATCH https://artist-capstone-fsnd-matthew.herokuapp.com/actors/1
 If you try to update an actor with an invalid id it will throw an `404`error:
 
 ```bash
-$ curl -X PATCH https://artist-capstone-fsnd-matthew.herokuapp.com/actors/125
+$ curl -X PATCH https://capstone-project-eu1y.onrender.com/actors/125
 ```
 
 will return
@@ -272,7 +273,7 @@ Additionally, trying to update an Actor with already existing field values will 
 Delete an existing Actor
 
 ```bash
-$ curl -X DELETE https://artist-capstone-fsnd-matthew.herokuapp.com/actors/1
+$ curl -X DELETE https://capstone-project-eu1y.onrender.com/actors/1
 ```
 
 - Request Arguments: **integer** `id from actor you want to delete`
@@ -294,7 +295,7 @@ $ curl -X DELETE https://artist-capstone-fsnd-matthew.herokuapp.com/actors/1
 If you try to delete actor with an invalid id, it will throw an `404`error:
 
 ```bash
-$ curl -X DELETE https://artist-capstone-fsnd-matthew.herokuapp.com/actors/125
+$ curl -X DELETE https://capstone-project-eu1y.onrender.com/actors/125
 ```
 
 will return
@@ -313,13 +314,13 @@ will return
 Query paginated movies.
 
 ```bash
-$ curl -X GET https://artist-capstone-fsnd-matthew.herokuapp.com/movies?page1
+$ curl -X GET https://capstone-project-eu1y.onrender.com/movies?page1
 ```
 - Fetches a list of dictionaries of examples in which the keys are the ids with all available fields
 - Request Arguments: 
     - **integer** `page` (optional, 10 movies per page, defaults to `1` if not given)
 - Request Headers: **None**
-- Requires permission: `read:movies`
+- Requires permission: `get:movies`
 - Returns: 
   1. List of dict of movies with following fields:
       - **integer** `id`
@@ -333,8 +334,8 @@ $ curl -X GET https://artist-capstone-fsnd-matthew.herokuapp.com/movies?page1
   "movies": [
     {
       "id": 1,
-      "release_date": "Sun, 16 Feb 2020 00:00:00 GMT",
-      "title": "Matthew first Movie"
+      "release_date": "Sun, 09 Dec 2020 00:00:00 GMT",
+      "title": "Arthur first Movie"
     }
   ],
   "success": true
@@ -345,7 +346,7 @@ $ curl -X GET https://artist-capstone-fsnd-matthew.herokuapp.com/movies?page1
 If you try fetch a page which does not have any movies, you will encounter an error which looks like this:
 
 ```bash
-$ curl -X GET https://artist-capstone-fsnd-matthew.herokuapp.com/movies?page123124
+$ curl -X GET https://capstone-project-eu1y.onrender.com/movies?page31241
 ```
 
 will return
@@ -364,14 +365,14 @@ will return
 Insert new Movie into database.
 
 ```bash
-$ curl -X POST https://artist-capstone-fsnd-matthew.herokuapp.com/movies
+$ curl -X POST https://capstone-project-eu1y.onrender.com/movies
 ```
 
 - Request Arguments: **None**
 - Request Headers: (_application/json_)
-       1. **string** `title` (<span style="color:red">*</span>required)
-       2. **date** `release_date` (<span style="color:red">*</span>required)
-- Requires permission: `create:movies`
+       1. **string** `title` 
+       2. **date** `release_date` 
+- Requires permission: `post:movies`
 - Returns: 
   1. **integer** `id from newly created movie`
   2. **boolean** `success`
@@ -388,7 +389,7 @@ If you try to create a new movie without a requiered field like `name`,
 it will throw a `422` error:
 
 ```bash
-$ curl -X GET https://artist-capstone-fsnd-matthew.herokuapp.com/movies?page123124
+$ curl -X GET https://capstone-project-eu1y.onrender.com/movies?page1555433
 ```
 
 will return
@@ -407,7 +408,7 @@ will return
 Edit an existing Movie
 
 ```bash
-$ curl -X PATCH https://artist-capstone-fsnd-matthew.herokuapp.com/movies/1
+$ curl -X PATCH https://capstone-project-eu1y.onrender.com/movies/1
 ```
 
 - Request Arguments: **integer** `id from movie you want to update`
@@ -430,8 +431,8 @@ $ curl -X PATCH https://artist-capstone-fsnd-matthew.herokuapp.com/movies/1
     "movie": [
         {
             "id": 1,
-            "release_date": "Sun, 16 Feb 2020 00:00:00 GMT",
-            "title": "Test Movie 123"
+            "release_date": "Tue, 19 Ago 2020 00:00:00 GMT",
+            "title": "Sunshine"
         }
     ],
     "success": true
@@ -442,7 +443,7 @@ $ curl -X PATCH https://artist-capstone-fsnd-matthew.herokuapp.com/movies/1
 If you try to update an movie with an invalid id it will throw an `404`error:
 
 ```bash
-$ curl -X PATCH https://artist-capstone-fsnd-matthew.herokuapp.com/movies/125
+$ curl -X PATCH https://capstone-project-eu1y.onrender.com/movies/125
 ```
 
 will return
@@ -450,7 +451,7 @@ will return
 ```js
 {
   "error": 404,
-  "message": "Movie with id 125 not found in database.",
+  "message": "Movie not found in database.",
   "success": false
 }
 ```
@@ -470,7 +471,7 @@ Additionally, trying to update an Movie with already existing field values will 
 Delete an existing movie
 
 ```bash
-$ curl -X DELETE https://artist-capstone-fsnd-matthew.herokuapp.com/movies/1
+$ curl -X DELETE https://capstone-project-eu1y.onrender.com/movies/1
 ```
 
 - Request Arguments: **integer** `id from movie you want to delete`
@@ -492,7 +493,7 @@ $ curl -X DELETE https://artist-capstone-fsnd-matthew.herokuapp.com/movies/1
 If you try to delete movie with an invalid id, it will throw an `404`error:
 
 ```bash
-$ curl -X DELETE https://artist-capstone-fsnd-matthew.herokuapp.com/movies/125
+$ curl -X DELETE https://capstone-project-eu1y.onrender.com/movies/125
 ```
 
 will return
@@ -505,38 +506,8 @@ will return
 }
 ```
 
-# <a name="authentification"></a>
+
 ## Authentification
 
 All API Endpoints are decorated with Auth0 permissions. To use the project locally, you need to config Auth0 accordingly
-
-### Auth0 for locally use
-#### Create an App & API
-
-1. Login to https://manage.auth0.com/ 
-2. Click on Applications Tab
-3. Create Application
-4. Give it a name like `Music` and select "Regular Web Application"
-5. Go to Settings and find `domain`. Copy & paste it into config.py => auth0_config['AUTH0_DOMAIN'] (i.e. replace `"example-matthew.eu.auth0.com"`)
-6. Click on API Tab 
-7. Create a new API:
-   1. Name: `Music`
-   2. Identifier `Music`
-   3. Keep Algorithm as it is
-8. Go to Settings and find `Identifier`. Copy & paste it into config.py => auth0_config['API_AUDIENCE'] (i.e. replace `"Example"`)
-
-#### Create Roles & Permissions
-
-1. Before creating `Roles & Permissions`, you need to `Enable RBAC` in your API (API => Click on your API Name => Settings = Enable RBAC => Save)
-2. Also, check the button `Add Permissions in the Access Token`.
-2. First, create a new Role under `Users and Roles` => `Roles` => `Create Roles`
-3. Give it a descriptive name like `Casting Assistant`.
-4. Go back to the API Tab and find your newly created API. Click on Permissions.
-5. Create & assign all needed permissions accordingly 
-6. After you created all permissions this app needs, go back to `Users and Roles` => `Roles` and select the role you recently created.
-6. Under `Permissions`, assign all permissions you want this role to have. 
-
-# <a name="authentification-bearer"></a>
-### Auth0 to use existing API
-If you want to access the real, temporary API, bearer tokens for all 3 roles are included in the `config.py` file.
 
